@@ -16,8 +16,4 @@
     <ProjectReference Include="..\GrindUp.Shared\GrindUp.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
 </Project>
