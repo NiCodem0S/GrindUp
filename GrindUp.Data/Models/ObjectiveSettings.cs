@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace GrindUp.Data.Models
+{
+    [Table("ObjectiveSettings")]
+    public class ObjectiveSettings
+    {
+        public int ObjectiveSettingsId { get; set; }
+        public int ObjectiveId { get; set; }
+        public int MeasurementTypeId { get; set; }
+        public int FrequencyTypeId { get; set; }
+        public int TargetAmount { get; set; }
+
+    }
+}

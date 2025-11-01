@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.21" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GrindUp.Data\GrindUp.Data.csproj" />
+    <ProjectReference Include="..\GrindUp.Shared\GrindUp.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

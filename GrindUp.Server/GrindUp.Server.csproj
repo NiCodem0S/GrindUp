@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GrindUp.Data\GrindUp.Data.csproj" />
+    <ProjectReference Include="..\GrindUp.Shared\GrindUp.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
