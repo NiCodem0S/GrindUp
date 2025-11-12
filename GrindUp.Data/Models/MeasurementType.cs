@@ -13,6 +13,6 @@ namespace GrindUp.Data.Models
         public int MeasurementTypeId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string? UnitName { get; set; } = string.Empty;
-        public string? Description { get; set; } = string.Empty;
+        public ICollection<ObjectiveSettings> ObjectiveSettings { get; set; } = new List<ObjectiveSettings>();
     }
 }

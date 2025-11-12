@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GrindUp.Shared\GrindUp.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

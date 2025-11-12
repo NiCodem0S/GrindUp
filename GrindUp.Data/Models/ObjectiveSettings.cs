@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using GrindUp.Shared.Enums;
 
 namespace GrindUp.Data.Models
 {
@@ -15,6 +16,8 @@ namespace GrindUp.Data.Models
         public int MeasurementTypeId { get; set; }
         public int FrequencyTypeId { get; set; }
         public int TargetAmount { get; set; }
-
+        public string? CustomPeriod { get; set; } = string.Empty;
+        public int DurationValue { get; set; }
+        public DurationUnit DurationUnit { get; set; }
     }
 }
