@@ -3,7 +3,7 @@ html, body {
 }
 
 .dashboard-main {
-    background-color: #eceef5;
+    background-color: #f1f2f7;
 }
 
 .dashboard-header {
@@ -42,6 +42,37 @@ html, body {
 
 .nav-scrollable {
     background-color: transparent !important;
+}
+
+.card-design {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 8px;
+    background: #E6E8F1;
+    max-width: 420px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title-and-details {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 60px;
+    padding: 0 16px;
+    gap: 8px;
+}
+
+.card-title{
+    grid-column: 2;
+    justify-self: center;
+}
+.card-creator {
+    grid-column: 3;
+    justify-self: end;
 }
 
 h1:focus {
