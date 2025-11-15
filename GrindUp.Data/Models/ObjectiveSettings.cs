@@ -19,5 +19,6 @@ namespace GrindUp.Data.Models
         public string? CustomPeriod { get; set; } = string.Empty;
         public int DurationValue { get; set; }
         public DurationUnit DurationUnit { get; set; }
+        public Objective Objective { get; set; } = new Objective();
     }
 }
