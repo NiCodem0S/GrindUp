@@ -18,7 +18,6 @@ namespace GrindUp.Data
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<ObjectiveSettings> ObjectiveSettings { get; set; }
         public DbSet<ProgressLog> ProgressLogs { get; set; }
-        public DbSet<MeasurementType> MeasurementTypes { get; set; }
         public DbSet<FrequencyType> FrequencyTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

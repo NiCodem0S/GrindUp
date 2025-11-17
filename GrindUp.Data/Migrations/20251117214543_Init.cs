@@ -39,20 +39,6 @@ namespace GrindUp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeasurementTypes)",
-                columns: table => new
-                {
-                    MeasurementTypeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UnitName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MeasurementTypes)", x => x.MeasurementTypeId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Objectives",
                 columns: table => new
                 {
@@ -84,22 +70,15 @@ namespace GrindUp.Data.Migrations
                     ObjectiveSettingsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ObjectiveId = table.Column<int>(type: "int", nullable: false),
-                    MeasurementTypeId = table.Column<int>(type: "int", nullable: false),
                     FrequencyTypeId = table.Column<int>(type: "int", nullable: false),
-                    TargetAmount = table.Column<int>(type: "int", nullable: false),
-                    CustomPeriod = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TargetAmount = table.Column<long>(type: "bigint", nullable: false),
                     DurationValue = table.Column<int>(type: "int", nullable: false),
+                    MeasurementValue = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true),
                     DurationUnit = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ObjectiveSettings", x => x.ObjectiveSettingsId);
-                    table.ForeignKey(
-                        name: "FK_ObjectiveSettings_MeasurementTypes)_MeasurementTypeId",
-                        column: x => x.MeasurementTypeId,
-                        principalTable: "MeasurementTypes)",
-                        principalColumn: "MeasurementTypeId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ObjectiveSettings_Objectives_ObjectiveId",
                         column: x => x.ObjectiveId,
@@ -117,7 +96,7 @@ namespace GrindUp.Data.Migrations
                     ObjectiveId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     LoggedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Amount = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<long>(type: "bigint", nullable: false),
                     Note = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -141,11 +120,6 @@ namespace GrindUp.Data.Migrations
                 name: "IX_Objectives_UserId",
                 table: "Objectives",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ObjectiveSettings_MeasurementTypeId",
-                table: "ObjectiveSettings",
-                column: "MeasurementTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ObjectiveSettings_ObjectiveId",
@@ -175,9 +149,6 @@ namespace GrindUp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProgressLogs");
-
-            migrationBuilder.DropTable(
-                name: "MeasurementTypes)");
 
             migrationBuilder.DropTable(
                 name: "Objectives");

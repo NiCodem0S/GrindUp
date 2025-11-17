@@ -14,7 +14,7 @@ namespace GrindUp.Data.Models
         public int ObjectiveId { get; set; }
         public int UserId { get; set; }
         public DateTime LoggedAt { get; set; }
-        public int Amount { get; set; }
+        public long Amount { get; set; }
         public string? Note { get; set; }
         public Objective Objective { get; set; } = new Objective();
         public AppUser User { get; set; } = new AppUser();

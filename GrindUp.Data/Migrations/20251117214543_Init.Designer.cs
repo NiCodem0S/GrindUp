@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrindUp.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251115001631_Init")]
+    [Migration("20251117214543_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -63,26 +63,6 @@ namespace GrindUp.Data.Migrations
                     b.ToTable("FrequencyTypes");
                 });
 
-            modelBuilder.Entity("GrindUp.Data.Models.MeasurementType", b =>
-                {
-                    b.Property<int>("MeasurementTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MeasurementTypeId"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UnitName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MeasurementTypeId");
-
-                    b.ToTable("MeasurementTypes)");
-                });
-
             modelBuilder.Entity("GrindUp.Data.Models.Objective", b =>
                 {
                     b.Property<int>("ObjectiveId")
@@ -130,9 +110,6 @@ namespace GrindUp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObjectiveSettingsId"));
 
-                    b.Property<string>("CustomPeriod")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DurationUnit")
                         .HasColumnType("int");
 
@@ -142,18 +119,17 @@ namespace GrindUp.Data.Migrations
                     b.Property<int>("FrequencyTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MeasurementTypeId")
-                        .HasColumnType("int");
+                    b.Property<string>("MeasurementValue")
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar(9)");
 
                     b.Property<int>("ObjectiveId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TargetAmount")
-                        .HasColumnType("int");
+                    b.Property<long>("TargetAmount")
+                        .HasColumnType("bigint");
 
                     b.HasKey("ObjectiveSettingsId");
-
-                    b.HasIndex("MeasurementTypeId");
 
                     b.HasIndex("ObjectiveId")
                         .IsUnique();
@@ -169,8 +145,8 @@ namespace GrindUp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgressLogId"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.Property<long>("Amount")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("LoggedAt")
                         .HasColumnType("datetime2");
@@ -206,12 +182,6 @@ namespace GrindUp.Data.Migrations
 
             modelBuilder.Entity("GrindUp.Data.Models.ObjectiveSettings", b =>
                 {
-                    b.HasOne("GrindUp.Data.Models.MeasurementType", null)
-                        .WithMany("ObjectiveSettings")
-                        .HasForeignKey("MeasurementTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("GrindUp.Data.Models.Objective", "Objective")
                         .WithOne("Settings")
                         .HasForeignKey("GrindUp.Data.Models.ObjectiveSettings", "ObjectiveId")
@@ -245,11 +215,6 @@ namespace GrindUp.Data.Migrations
                     b.Navigation("Objectives");
 
                     b.Navigation("ProgressLogs");
-                });
-
-            modelBuilder.Entity("GrindUp.Data.Models.MeasurementType", b =>
-                {
-                    b.Navigation("ObjectiveSettings");
                 });
 
             modelBuilder.Entity("GrindUp.Data.Models.Objective", b =>
