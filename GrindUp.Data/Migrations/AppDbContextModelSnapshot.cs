@@ -78,6 +78,12 @@ namespace GrindUp.Data.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsArchived")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -88,9 +94,6 @@ namespace GrindUp.Data.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("isArchived")
-                        .HasColumnType("bit");
 
                     b.HasKey("ObjectiveId");
 
@@ -217,8 +220,7 @@ namespace GrindUp.Data.Migrations
                 {
                     b.Navigation("ProgressLogs");
 
-                    b.Navigation("Settings")
-                        .IsRequired();
+                    b.Navigation("Settings");
                 });
 #pragma warning restore 612, 618
         }

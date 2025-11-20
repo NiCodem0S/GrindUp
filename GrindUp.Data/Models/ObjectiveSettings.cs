@@ -19,6 +19,6 @@ namespace GrindUp.Data.Models
         public int DurationValue { get; set; }
         public string? MeasurementValue { get; set; } = string.Empty;
         public DurationUnit DurationUnit { get; set; }
-        public Objective Objective { get; set; } = new Objective();
+        public Objective? Objective { get; set; }
     }
 }

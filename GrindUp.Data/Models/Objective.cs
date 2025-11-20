@@ -22,9 +22,9 @@ namespace GrindUp.Data.Models
         public bool IsArchived { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        bool IsPublic { get; set; }
-        public ObjectiveSettings Settings { get; set; } = new ObjectiveSettings();
+        public bool IsPublic { get; set; }
+        public ObjectiveSettings? Settings { get; set; }
         public ICollection<ProgressLog> ProgressLogs { get; set; } = new List<ProgressLog>();
-        public AppUser Owner { get; set; } = new AppUser();
+        public AppUser? Owner { get; set; }
     }
 }
