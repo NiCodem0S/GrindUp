@@ -73,7 +73,7 @@ namespace GrindUp.Data.Migrations
                     FrequencyTypeId = table.Column<int>(type: "int", nullable: false),
                     TargetAmount = table.Column<long>(type: "bigint", nullable: false),
                     DurationValue = table.Column<int>(type: "int", nullable: false),
-                    MeasurementValue = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true),
+                    MeasurementValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DurationUnit = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -17,7 +17,6 @@ namespace GrindUp.Data.Models
         public int FrequencyTypeId { get; set; }
         public long TargetAmount { get; set; }
         public int DurationValue { get; set; }
-        [MaxLength(9)]
         public string? MeasurementValue { get; set; } = string.Empty;
         public DurationUnit DurationUnit { get; set; }
         public Objective Objective { get; set; } = new Objective();

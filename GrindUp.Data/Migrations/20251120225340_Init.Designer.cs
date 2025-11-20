@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrindUp.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251117214543_Init")]
+    [Migration("20251120225340_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -120,8 +120,7 @@ namespace GrindUp.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MeasurementValue")
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ObjectiveId")
                         .HasColumnType("int");

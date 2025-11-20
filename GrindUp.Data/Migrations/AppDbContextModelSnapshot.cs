@@ -117,8 +117,7 @@ namespace GrindUp.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MeasurementValue")
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ObjectiveId")
                         .HasColumnType("int");
