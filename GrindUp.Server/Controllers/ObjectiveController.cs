@@ -17,7 +17,17 @@ namespace GrindUp.Server.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var objectives = _context.Objectives.ToList();
+            var objectives = from obj in _context.Objectives
+                join objSets in _context.ObjectiveSettings
+                on obj.ObjectiveId equals objSets.ObjectiveId
+                select new
+                {
+                        ObjectiveId = obj.ObjectiveId,
+                        Title = obj.Title,
+                        Description = obj.Description,
+                        TargetAmount = objSets.TargetAmount,
+                        DurationValue = objSets.DurationValue
+                };
 
             return Ok(objectives);
         }
@@ -25,7 +35,7 @@ namespace GrindUp.Server.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
-            var objective = _context.Objectives.Find(id);
+            var objective = _context.Objectives.Include(o => o.Settings).FirstOrDefault();
 
             if(objective == null)
             {
